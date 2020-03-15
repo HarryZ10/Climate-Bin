@@ -1,3 +1,4 @@
+pyOpenSSL==19.1.0
 werkzeug==0.16.1
 msgpack==1.0.0
 setuptools==40.8.0
