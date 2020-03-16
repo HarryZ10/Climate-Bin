@@ -79,8 +79,8 @@ Here is a link to video I made about the process for getting a mongodb.com accou
 3) You then going to get a free database "cluster".  Follow the instructions to do this.  Once you click the "Create Cluster"
     button it will take a while for the cluster to be created. The new cluster will be greyed out until it is done.  When 
     the new cluster is ready you will be able to click the connect button.
-4) click the connect button and then add 0.0.0.0 as teh whitelist IP.  This will make it possible to administer your 
-    database from anywhere.  Also add and new database admin and password.  This password will be viwable by a lot of people 
+4) click the connect button and then add 0.0.0.0 as the whitelist IP.  This will make it possible to administer your 
+    database from anywhere.  Also add a new database admin and password.  This password will be viewable by a lot of people 
     in class so don't use one that you already use for other important things.  Something simple like Admin and BullDogz.
 5) Now you need to choose a connection method.  Click "Connect Your Application" and then configure the screen to give you the 
     code for Python 3.6 and above and click "Copy"
