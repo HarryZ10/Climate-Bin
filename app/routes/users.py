@@ -35,7 +35,7 @@ import os
 CLIENT_SECRETS_FILE = "credentials.json"
 
 # List of email addresses for Admin users
-admins = ['stephen.wright@ousd.org','s_your.name@ousd.org']
+admins = ['s_harry.zhu@ousd.org','harryzhu45@gmail.com']
 
 # This code is run right after the app starts up and then not again. It defines a few universal things
 # like is the app being run on a local computer and what is the local timezone
@@ -115,9 +115,9 @@ def login():
 
     # get the google email address from the data object and check to see if the user has an ousd email account.  
     # Deny access if they do not
-    if not data['emailAddresses'][0]['value'][-8:] == "ousd.org":
-        flash('You must have an ousd.org email address to access this site')
-        return redirect(url_for('logout'))
+    # if not data['emailAddresses'][0]['value'][-8:] == "ousd.org":
+    #     flash('You must have an ousd.org email address to access this site')
+    #     return redirect(url_for('logout'))
 
     try:
         # see if the user already exists in the user dtabase document. If they don't then this attempt
@@ -137,25 +137,21 @@ def login():
         
     except:
         # If the user was not in the database, then set some variables and create them
-        # first decide if they are a student or a teacher by checking the front of their email address
-        if data['emailAddresses'][0]['value'][0:2] == 's_':
-            role = 'student'
-        else:
-            role = 'teacher'
+        # first decide if they are a student or a teacher by checking the front of their email address   
 
         #See if the new user is in the Admins list
         if data['emailAddresses'][0]['value'] in admins:
             admin = True
+            role = 'teacher'
         else:
+            role = 'student'
             admin = False
 
         # Create a newUser object filled with the google values and the values that were just created
         newUser = User(
                         gid=data['emailAddresses'][0]['metadata']['source']['id'], 
                         gfname=data['names'][0]['displayName'], 
-                        glname=data['names'][0]['familyName'],
                         fname=data['names'][0]['givenName'], 
-                        lname=data['names'][0]['familyName'],
                         email=data['emailAddresses'][0]['value'],
                         image=data['photos'][0]['url'],
                         role=role,
@@ -173,7 +169,7 @@ def login():
     # to store values that you want to be able to access while a user is logged in. The va;ues in the sesion
     # list can be added, changed, deleted as you would with any python list.
     session['currUserId'] = str(currUser.id)
-    session['displayName'] = currUser.fname+" "+currUser.lname
+    session['displayName'] = currUser.fname+" "+str(currUser.lname)
     session['gid'] = data['emailAddresses'][0]['metadata']['source']['id']
     # this stores the entire Google Data object in the session
     session['gdata'] = data
