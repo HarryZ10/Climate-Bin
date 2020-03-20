@@ -56,6 +56,12 @@ body {
     color: black;
   }
   
+.flashes{
+  color: red;
+  list-style-type: square;
+  text-align: left;
+}
+
   div#registration.jumbotron{
     width: 500px;
     margin-left: 300px;
@@ -390,25 +396,22 @@ body {
   .back-to-top {
     position: fixed;
     display: none;
-    background: #0078ff;
-    color: #fff;
-    width: 44px;
-    height: 44px;
+    background: white;
     text-align: center;
     line-height: 1;
     font-size: 16px;
     border-radius: 50%;
-    right: 15px;
-    bottom: 15px;
-    transition: background 0.5s;
+    right: 5px;
+    bottom: 5px;
+    transition: background 0.3s;
     z-index: 11;
   }
   
-  .back-to-top i {
+  /* .back-to-top i {
     padding-top: 12px;
     color: #fff;
-  }
-  
+  } */
+   
   /* Prelaoder */
   
   #preloader {
@@ -469,6 +472,13 @@ body {
     background-color: transparent;
     padding-top: 1.563rem;
     padding-bottom: 1.563rem;
+  }
+
+  .subnavbar .navbar-fixed-top {
+      top: 50px;
+      position: fixed;
+      background: rgb(98, 42, 169);
+      z-index: 1000;
   }
   
   .navbar-b.navbar-reduce {

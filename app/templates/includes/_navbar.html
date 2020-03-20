@@ -12,15 +12,6 @@
       <li class="nav-item">
         <a class="nav-link js-scroll active" href="/">Home</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link js-scroll" href="#about">Who I Am</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link js-scroll" href="#contact">Contact Me</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link js-scroll" href="#service">Services</a>
-      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       {% if session['credentials'] and session["displayName"] %}
@@ -44,5 +35,16 @@
           </li>
       {% endif %}
     </ul>
+  </div>
+</nav>
+<nav class="subnavbar navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-collapse collapse navbar-right" id="subnavbar">
+      <ul class="nav navbar-nav sub-1" style="display:none;">
+        <li class="active"><a href="#services">Services</a></li>
+        <li><a href="#about">Who I Am</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

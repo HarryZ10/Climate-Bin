@@ -7,7 +7,7 @@
     
     <div id="home" class="intro route">
       <video autoplay muted loop class="FullScreen">
-        <source src="../vid/intro-vid.mp4" type="video/mp4">
+        <source src="{{ url_for('static', filename='intro-vid.mp4') }}" type="video/mp4">
       </video>
       <div class="overlay-intro"></div>
       <div class="intro-content display-table">
@@ -97,7 +97,7 @@
                   <div class="row">
                     <div class="col-sm-6 col-md-5">
                       <div class="about-img">
-                        <img src="../img/testimonial-2.jpg" class="img-fluid rounded b-shadow-a" alt="">
+                        <img src="{{ url_for('static', filename='testimonial-2.jpg') }}" class="img-fluid rounded b-shadow-a" alt="">
                       </div>
                     </div>
                     <div class="col-sm-6 col-md-7">
@@ -136,7 +136,7 @@
       </div>
     </section>
   
-    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(../img/overlay-bg.jpg)">
+    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(../static/overlay-bg.jpg)">
       
       <div class="overlay-mf"></div>
       <div class="container">
@@ -228,7 +228,7 @@
       </section>
   
   
-      <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+      <a href="#" class="back-to-top"><span class="iconify" data-icon="ion:arrow-up-circle-sharp" data-inline="false" style="color: #0078ff;" data-width="72" data-height="72"></span></a>
       <div id="preloader"></div>
     
   
