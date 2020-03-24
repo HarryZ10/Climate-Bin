@@ -1,49 +1,12 @@
-<!-- This is the navbar code. This code will be included in all of the template files. -->
-<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-  <a class="navbar-brand" href="/">Climate Bin</a>
-  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link js-scroll active" href="/">Home</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      {% if session['credentials'] and session["displayName"] %}
-
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ session["displayName"] }}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/submission">Upload</a>
-              <a class="dropdown-item" href="/profile">Profile</a>
-              <a class="dropdown-item" href="/error">My Database</a>
-              <a class="dropdown-item" href="/error">Starred Resources</a>
-              <a class="dropdown-item" href="/logout">Logout</a>
-              <a class="dropdown-item" href="/revoke">Forget Me</a>
-            </div>
-          </li>
-      {% else %}
-          <li class="nav-item active">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
-<nav class="subnavbar navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-b navbar-trans second-navbar fixed-top navbar-expand-md scrolling-navbar double-nav"
+  role="navigation" id="subNav">
+  <a class="navbar-brand js-scroll active" href="#">Home</a>
   <div class="container">
-    <div class="navbar-collapse collapse navbar-right" id="subnavbar">
-      <ul class="nav navbar-nav sub-1" style="display:none;">
-        <li class="active"><a href="#services">Services</a></li>
-        <li><a href="#about">Who I Am</a></li>
-        <li><a href="#contact">Contact Me</a></li>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="nav-item"><a class="nav-link js-scroll" href="#service">Services</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll" href="#about">Who I Am</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll" href="#contact">Contact Me</a></li>
       </ul>
     </div>
   </div>

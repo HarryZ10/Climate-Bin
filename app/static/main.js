@@ -1,57 +1,31 @@
 (function ($) {
 	"use strict";
 	var nav = $('nav');
-  var navHeight = nav.outerHeight();
-  
-  $('.navbar-toggler').on('click', function() {
-    if( ! $('#mainNav').hasClass('navbar-reduce')) {
-      $('#mainNav').addClass('navbar-reduce');
-    }
-  })
+	var navHeight = nav.outerHeight();
 
-  $(function() {
-	$('#navbar.navbar-right ul li a').click(function() {
-	  //clear active status of any parent LI's
-	  $('#navbar.navbar-right ul li').removeClass('active');
-  
-	  // store id of new active sub-nav
-	  var currSub = $(this).parent();
-	  currSub.addClass('active')
-	  var id = currSub.attr('id');
-  
-	  // clear active status of any sub-nav list
-	  $('#subnavbar ul.navbar-nav').removeClass('active');
-  
-	  // set selected sub-nav to active
-	  $('.' + id).addClass('active');
-  
-	  console.log($('.' + id).attr('class'));
-  
+	// Preloader
+	$(document).ready(function () {
+		if ($('#preloader').length) {
+			$('#preloader').delay(2500).fadeOut('slow', function () {
+				$(this).remove();
+			});
+		}
 	});
-  
-  });
 
-  // Preloader
-  $(document).ready(function () {
-    if ($('#preloader').length) {
-      $('#preloader').delay(2500).fadeOut('slow', function () {
-        $(this).remove();
-      });
-    }
-  });
-
-  // Back to top button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
-    } else {
-      $('.back-to-top').fadeOut('slow');
-    }
-  });
-  $('.back-to-top').click(function(){
-    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
-    return false;
-  });
+	// Back to top button
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 100) {
+			$('.back-to-top').fadeIn('slow');
+		} else {
+			$('.back-to-top').fadeOut('slow');
+		}
+	});
+	$('.back-to-top').click(function () {
+		$('html, body').animate({
+			scrollTop: 0
+		}, 1500, 'easeInOutExpo');
+		return false;
+	});
 
 	/*--/ Star ScrollTop /--*/
 	$('.scrolltop-mf').on("click", function () {
@@ -87,7 +61,7 @@
 
 	// Activate scrollspy to add active class to navbar items on scroll
 	$('body').scrollspy({
-		target: '#mainNav',
+		target: '#subNav',
 		offset: navHeight
 	});
 	/*--/ End Scrolling nav /--*/
@@ -95,7 +69,7 @@
 	/*--/ Navbar Menu Reduce /--*/
 	$(window).trigger('scroll');
 	$(window).on('scroll', function () {
-		var pixels = 50; 
+		var pixels = 50;
 		var top = 1200;
 		if ($(window).scrollTop() > pixels) {
 			$('.navbar-expand-md').addClass('navbar-reduce');
@@ -113,7 +87,7 @@
 
 	/*--/ Star Typed /--*/
 	if ($('.text-slider').length == 1) {
-    var typed_strings = $('.text-slider-items').text();
+		var typed_strings = $('.text-slider-items').text();
 		var typed = new Typed('.text-slider', {
 			strings: typed_strings.split(','),
 			typeSpeed: 80,

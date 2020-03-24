@@ -474,11 +474,13 @@ body {
     padding-bottom: 1.563rem;
   }
 
-  .subnavbar .navbar-fixed-top {
-      top: 50px;
-      position: fixed;
-      background: rgb(98, 42, 169);
-      z-index: 1000;
+  .navbar.second-navbar {
+    margin-top: 60px;
+    transition: all .5s ease-in-out;
+  }
+  
+  .navbar.second-navbar.top-nav-collapse {
+    margin-top: 45px;
   }
   
   .navbar-b.navbar-reduce {
@@ -768,6 +770,10 @@ body {
   //--//-->   ABOUT
   ======================================*/
   
+  #about{
+    padding-top: 100px;
+  }
+
   .about-mf .box-shadow-full {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -801,6 +807,10 @@ body {
   //--//-->   SERVICES
   ======================================*/
   
+  #service{
+    padding-top: 100px;
+  }
+
   .service-box {
     background-color: #fff;
     padding: 2.5rem 1.3rem;
@@ -1155,6 +1165,10 @@ body {
   //--//-->   CONTACT
   ======================================*/
   
+  #contact{
+    padding-top: 100px;
+  }
+
   .footer-paralax {
     padding: 4rem 0 0 0;
   }
