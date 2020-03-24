@@ -97,7 +97,7 @@ def before_request():
 @app.route('/home')
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", isIndex=True)
 
 # a lot of stuff going on here for the user as they log in including creatin new users if this is their first login
 @app.route('/login')
