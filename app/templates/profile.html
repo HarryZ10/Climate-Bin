@@ -3,12 +3,11 @@ because it is really help to be able to pull up all the values that are availabl
 via google and via the User data object-->
 
 {% extends "base.html" %}
-
 {% block body %}
 
-<div class="containter">
-    <div class="jumbotron text-center">
-        <h1>Profile for {{ session['displayName'] }}</h1>
+<body id="page-top">
+    <div class="jumbotron text-center" style="background-color: #0078ff; border-radius: 0 !important;">
+        <h1 style="color:white;">Profile for {{ session['displayName'] }}</h1>
         <img src="{{currUser['image']}}" alt="user image"><br>
         <a class="btn btn-primary" href="/editprofile">Edit User</a>
     </div>
@@ -16,33 +15,37 @@ via google and via the User data object-->
     <div>
         <h3>The User Object from this site</h3>
         <table class="table">
-        {% for item in currUser %}
-        <tr>
-            <td>{{item}}</td> <td> {{ currUser[item] }}</td>
-        </tr>
-        {% endfor %}
+            {% for item in currUser %}
+            <tr>
+                <td>{{item}}</td>
+                <td> {{ currUser[item] }}</td>
+            </tr>
+            {% endfor %}
         </table>
 
         <h3>The Data Object from Google</h3>
         <table class="table">
-        {% for item in data %}
-        <tr>
-            <td>{{ item }}</td> <td>{{data[item]}}</td>
-        </tr>
-        {% endfor %}
+            {% for item in data %}
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{data[item]}}</td>
+            </tr>
+            {% endfor %}
         </table>
 
         <h3>The Session Object</h3>
         <table class="table table=sm">
-        {% for item in session %}
-        <tr>
-            <td>{{ item }}</td> <td>{{session[item]}}</td>
-        </tr>
-        {% endfor %}
+            {% for item in session %}
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{session[item]}}</td>
+            </tr>
+            {% endfor %}
         </table>
-        
+
     </div>
     <br><br><br>
-</div>
-
+</body>
+<a href="#" class="back-to-top"><span class="iconify" data-icon="ion:arrow-up-circle-sharp" data-inline="false"
+    style="color: #0078ff;" data-width="72" data-height="72"></span></a>
 {% endblock %}

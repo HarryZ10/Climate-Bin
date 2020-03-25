@@ -192,7 +192,7 @@ def profile():
     # this works because gid is defined in the data class to be unique 
     currUser=User.objects.get(gid=session['gid'])
     #Send the user to the profile.html template
-    return render_template("profile.html", currUser=currUser, data=session['gdata'])
+    return render_template("profile.html", currUser=currUser, data=session['gdata'], isIndex=False)
 
 # to get an in depth description of how creating, editing and deleting database recodes work check
 # out the feedback.py file.
@@ -314,6 +314,14 @@ def revoke():
         flash('An error occurred.')
         return redirect('/')
 
+@app.errorhandler(404)
+def error404(error):
+    return render_template('errorpage.html'), 404
+
+
+@app.errorhandler(500)
+def error404(error):
+    return render_template('errorpage.html'), 500
 
 @app.route("/logout")
 def logout():

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+    <title>
+        Harry | Submissions Form
+    </title>
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/favicon.png" rel="apple-touch-icon">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+    <!-- Nav Bar Start -->
+    <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll" href="#page-top">Harry Zhu</a>
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+                aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll active" href="index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown" style="z-index:4">
+                            <button
+                                class="btn transparentbar navbar-default btn-secondary nav-link js-scroll dropdown-toggle"
+                                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Private
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="errorpage">My Database</a>
+                                <a class="dropdown-item" href="errorpage">Starred Resources</a>
+                                <a class="dropdown-item" href="submission">Submit Resources Form</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll" href="login">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll" href="register">Join Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BODY CONTENT -->
+
+    <section id="submissions" class="paralax-mf footer-paralax bg-image" style="background-image: url(img/overlay-bg.jpg)">
+        <div class="overlay-mf"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="contact-mf">
+                        <div id="submissions" class="box-shadow-full">
+                            <div class="row">
+                                <div id="submissions" class="col-md-6">
+                                    <div class="title-box-2">
+                                        <h3 class="title-center">
+                                            Submit Resource
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <form action="#" method="post" enctype="text/plain" name="SubmissionForm"
+                                            role="form" class="contactForm">
+                                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                                            <div id="errormessage">Message was sent. Please try again.</div>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <div class="form-group">
+                                                        <input type="text" name="name" class="form-control" id="name"
+                                                            placeholder="Your Name" data-rule="minlen:4"
+                                                            data-msg="Please enter at least 4 chars" />
+                                                        <div class="validation"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <div class="form-group">
+                                                        <input type="email" class="form-control" name="email" id="email"
+                                                            placeholder="Your Email" data-rule="email"
+                                                            data-msg="Please enter a valid email" />
+                                                        <div class="validation"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="inputGroupFileAddon01">Upload</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" style="width: 400px !important;"
+                                                            class="custom-file-input" id="inputGroupFile01"
+                                                            aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label" for="inputGroupFile01">Choose
+                                                            file</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <br>
+                                                    <button type="submit"
+                                                        class="button button-a button-big button-rouded">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <a href="#page-top" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div id="preloader"></div>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/popper/popper.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/counterup/jquery.waypoints.min.js"></script>
+    <script src="lib/counterup/jquery.counterup.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
