@@ -8,3 +8,4 @@ from .posts import *
 from .calendar import *
 from .feedback import *
 from .scopes import *
+from .navigation import *

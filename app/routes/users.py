@@ -185,6 +185,9 @@ def login():
     # be able to be returned to the page they originally asked for.
     return redirect(session['return_URL'])
 
+
+
+
 #This is the profile page for the logged in user
 @app.route('/profile')
 def profile():
