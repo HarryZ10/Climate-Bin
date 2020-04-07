@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--This is the base template. The code on this page shows up on every page. The other template files are all embedded in this file. -->
 <html lang="en">
 
 <head>
@@ -23,8 +22,6 @@
     <!--This is some javascript tools for displaying date and time-->
     {{ moment.include_jquery() }}
     {{ moment.include_moment() }}
-
-
 
 </head>
 
@@ -78,8 +75,6 @@
 
     {% include 'includes/_navbar.html' %}
 
-    
-
     <!--This is where each of the templates are embedded in to this template -->
     <div class="container.fluid">
         {% block body %}
@@ -106,99 +101,7 @@
 
     <!-- Footer -->
     <footer class="page-footer font-small indigo" style="background-color:#2b2e2c;position:sticky; z-index: 100;">
-
-        <!-- Footer Links -->
-        <div class="container">
-
-            <!-- Grid row-->
-            <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#about">About us</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Products</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Awards</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Help</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a href="#!">Contact</a>
-                    </h6>
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row-->
-            <hr class="rgba-white-light" style="margin: 0 15%;">
-
-            <!-- Grid row-->
-            <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
-
-                <!-- Grid column -->
-                <div class="col-md-8 col-12 mt-5">
-                    <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                        explicabo.
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                        consequuntur.</p>
-                </div>
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row-->
-            <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
-            <!-- Grid row-->
-            <div class="row pb-3">
-                <!-- Grid column -->
-                <div class="col-md-12">
-                    <div class="mb-5 flex-center">
-                        <!-- Twitter -->
-                        <a class="tw-ic" href="https://twitter.com/harryjzhu">
-                            <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!--Linkedin -->
-                        <a class="li-ic" href="https://www.linkedin.com/in/harryjzhu/">
-                            <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
-                        </a>
-                        <!--Instagram-->
-                        <a class="ins-ic" href="https://www.instagram.com/harryjzhu/">
-                            <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
-                        </a>
-                    </div>
-                </div>
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row-->
-        </div>
-        <div class="footer-copyright text-center py-3">
-            <a href="https://oaklandtech.com"> Computer Science Academy Capstone</a>
-        </div>
+        <div class="footer-copyright text-center py-4"><a href="https://oaklandtech.com" style="text-decoration: none;"> Computer Science Academy Capstone</a></div>
     </footer>
     <!-- Footer -->
 
