@@ -25,11 +25,14 @@ from app.classes.data import User
 from app.classes.forms import UserForm
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
+from urllib.parse import urlparse
+from os.path import splitext
 import requests
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import os
+
 
 # this is a reference to the google project json file you downloaded using the setup.txt instructions
 CLIENT_SECRETS_FILE = "credentials.json"
@@ -49,6 +52,12 @@ def before_first_request():
         session['devenv'] = False
         session['localtz'] = 'UTC'
 
+#This gets the extension type from the URL in order to check whether ignore the ext for authorization and returning URL after logging in
+def get_ext(url):
+    parsed = urlparse(url)
+    root, ext = splitext(parsed.path)
+    return ext[1:]  # or ext[1:] if you don't want the leading '.'
+
 # This runs before every route and serves to make sure users are using a secure site and can only
 # access pages they are allowed to access
 @app.before_request
@@ -63,23 +72,21 @@ def before_request():
     # Create a list of all the paths that do not need authorization or are part of authorizing
     # so that each path this is *not* in this list requires an authorization check.
     # If you have urls that you want your user to be able to see without logging in add them here.
-    unauthPaths = ['/','/authorize','/login','/oauth2callback','/static/main.js',
-                    '/static/local.css','/static/intro-vid.mp4','/static/favicon.ico/',
-                    '/static/overlay-bg.jpg','/static/testimonial-2.jpg']
+    unauthPaths = ['/','/home','/authorize','/login','/oauth2callback','/static/main.js',
+                    '/static/local.css','/static/overlay-bg.jpg','/static/testimonial-2.jpg',
+                    '/static/intro-vid.mp4','/static/interactive.mp4']
                 
     # this is some tricky code designed to send the user to the page they requested even if they have to first go through
     # a authorization process.
-    
     session['return_URL'] = '/'
-    
     # try: 
     #     session['return_URL']
-    # except:
+    # except KeyError:
     #     session['return_URL'] = '/'
     
     # if request.path not in unauthPaths:
     #     session['return_URL'] = request.full_path
-
+    
     # this sends users back to authorization if the login has timed out or other similar stuff
     if request.path not in unauthPaths:
         if 'credentials' not in session:
@@ -95,9 +102,24 @@ def before_request():
 
 # This tells the app what to do if the user requests the home either via '/home' or just'/'
 @app.route('/home')
-@app.route('/')
 def index():
+    
     return render_template("index.html", isIndex=True)
+
+@app.route('/')
+def redirectHome():
+    return redirect('home')
+
+
+# # @app.route('/static/interactive.mp4')
+# # @app.route('/static/favicon.ico')
+# # @app.route('/static/intro-vid.mp4')
+# # @app.route('/static/local.css')
+# # @app.route('/static/main.js')
+# # @app.route('/static/overlay-bg.jpg')
+# @app.route('/static/<filename>')
+# def static_files(filename):
+#     return redirect('/home')
 
 # a lot of stuff going on here for the user as they log in including creatin new users if this is their first login
 @app.route('/login')
