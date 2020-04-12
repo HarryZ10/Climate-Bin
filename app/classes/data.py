@@ -11,7 +11,7 @@ job of making it easy to to do the basic stuff
 # where I use them.  Some of them like StringField and IntField are obvious. When you use these fields below they are used as methods
 # which simply means that you use '()' after the field name like 'StringField()'. You can find all of the mongoengine fields here
 # http://docs.mongoengine.org/apireference.html#fields
-from mongoengine import Document, StringField, IntField, BooleanField, ReferenceField, EmbeddedDocumentField, DateTimeField, DateField, EmailField, URLField, ListField, CASCADE
+from mongoengine import Document, StringField, IntField, BooleanField, ReferenceField, EmbeddedDocumentField, DateTimeField, DateField, EmailField, URLField, ListField, CASCADE, FileField
 
 # This class is what creates the databse document where all user information is stored.
 class User(Document):
@@ -111,15 +111,19 @@ class Comment(Document):
         'ordering': ['+createdate']
     }
 
-# Events are items that are displayed on the calendar.  The fields are very simple and
-# and can easily be changed to add other information that you want. 
-class Event(Document):
-    # All events have 'owners' which are a referencefield connected to the User document
-    owner = ReferenceField(User)
+class Video(Document):
+    subject = StringField()
     title = StringField()
-    desc = StringField()
-    date = DateTimeField()
+    url = StringField()
+    body = StringField()
+    createdate = DateTimeField()
+    modifydate = DateTimeField()
+    contact_email = EmailField()
+    vlink = StringField()
+    # video = FileField()
+    # vname = StringField()
+    author = ReferenceField(User, reverse_delete_rule=CASCADE)
 
     meta = {
-        'ordering': ['+date']
+        'ordering': ['+createdate']
     }

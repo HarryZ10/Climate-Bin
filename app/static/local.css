@@ -95,10 +95,10 @@ section#submissions {
   transform: translate(-50%, -50%);
 }
 
-a {
+/* a {
   color: #1e1e1e;
   transition: all 0.5s ease-in-out;
-}
+} */
 
 a:hover {
   color: #0078ff;
@@ -172,7 +172,7 @@ a:hover {
   top: 0;
   left: 0px;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   opacity: .7;
 }
@@ -1233,20 +1233,10 @@ div#submissions.box-shadow-full {
 
 footer {
   text-align: center;
-  color: #fff;
   padding-bottom: 4rem;
-}
-
-footer .copyright {
-  margin-bottom: .3rem;
-}
-
-footer .credits {
-  margin-bottom: 0;
-}
-
-footer .credits a {
-  color: #fff;
+  position: absolute;
+  width: 100%;
+  background-color:#2b2e2c;
 }
 
 /*======================================

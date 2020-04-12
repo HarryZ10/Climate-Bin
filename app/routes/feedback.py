@@ -183,14 +183,4 @@ def deletefeedback(feedbackid):
 
     # If they do have the privleges then do the delete thang and send the user to a list of all remaining feedback records
     deleteFback.delete()
-    return redirect(url_for('feedbackall'))
-
-@app.route('/fbackobjs')
-def fbackobjs():
-    fbacks = Feedback.objects
-    for fback in fbacks:
-        flash(f'The author of this fedback is {fback.author.gfname} and the subjt is {fback.subject}')
-        print(f'the author of this fedback is {fback.author.gfname} and the subjt is {fback.subject}')
-        return redirect('/')
-
-    
+    return redirect(url_for('feedbackall')) 

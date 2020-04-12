@@ -27,6 +27,11 @@
 		return false;
 	});
 
+	// Modal
+	$('#ExploreModal').on('shown.bs.modal', function () {
+		$('#myInput').trigger('focus')
+	  })
+
 	/*--/ Star ScrollTop /--*/
 	$('.scrolltop-mf').on("click", function () {
 		$('html, body').animate({

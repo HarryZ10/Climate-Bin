@@ -74,7 +74,7 @@ def before_request():
     # If you have urls that you want your user to be able to see without logging in add them here.
     unauthPaths = ['/','/home','/authorize','/login','/oauth2callback','/static/main.js',
                     '/static/local.css','/static/overlay-bg.jpg','/static/testimonial-2.jpg',
-                    '/static/intro-vid.mp4','/static/interactive.mp4']
+                    '/static/intro-vid.mp4','/static/interactive.mp4','/explore']
                 
     # this is some tricky code designed to send the user to the page they requested even if they have to first go through
     # a authorization process.
@@ -101,14 +101,11 @@ def before_request():
             session['credentials'] = credentials_to_dict(credentials)
 
 # This tells the app what to do if the user requests the home either via '/home' or just'/'
+@app.route('/')
 @app.route('/home')
 def index():
     
     return render_template("index.html", isIndex=True)
-
-@app.route('/')
-def redirectHome():
-    return redirect('home')
 
 
 # # @app.route('/static/interactive.mp4')
@@ -344,9 +341,9 @@ def error404(error):
     return render_template('errorpage.html'), 404
 
 
-@app.errorhandler(500)
-def error404(error):
-    return render_template('errorpage.html'), 500
+# @app.errorhandler(500)
+# def error404(error):
+#     return render_template('errorpage.html'), 500
 
 @app.route("/logout")
 def logout():

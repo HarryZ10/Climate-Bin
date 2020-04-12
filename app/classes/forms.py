@@ -9,7 +9,20 @@ from flask_wtf import FlaskForm
 from wtforms.fields.html5 import URLField, DateField
 from wtforms_components import TimeField
 from wtforms.validators import url
-from wtforms import StringField, SubmitField, validators, TextAreaField, HiddenField, IntegerField, SelectField
+from wtforms import StringField, SubmitField, validators, TextAreaField, HiddenField, IntegerField, SelectField, FileField
+
+class UploadForm(FlaskForm):
+    url = URLField("Do not enter anything...")
+    subject = SelectField(choices=[('Tutorial','Tutorial'),('Information','Information')])
+    title = TextAreaField("Title of Video")
+    vlink = URLField("Video link (YouTube, Vimeo, Loom, Facebook, etc")
+    # File must mp4
+    # video = FileField("Video")
+    body = TextAreaField("Description and/or in-depth game plan")
+    submit = SubmitField("Submit")
+
+
+
 
 # This is the form for creating and updating users. The fields that are listed here in the UserForm
 # are the one's that the user is allowed to create and edit. You can see how this form is shown to the user in the 

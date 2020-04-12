@@ -1,10 +1,9 @@
-
 {% extends "base.html" %}
 {% block body %}
 
 <head>
     <title>
-        Harry | Universal Board
+        Explore - Climate Bin
     </title>
 </head>
 
@@ -17,6 +16,8 @@
             <source src="{{ url_for('static', filename='interactive.mp4') }}" type="video/mp4">
         </video>
         <div class="container">
+            <!-- Button trigger modal-->
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="title-box text-center">
@@ -34,91 +35,61 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <div class="jumbotron text-center">
+                    <table class='table table-sm'>
 
-            <div class="row">
+                        <tr>
+                   
+                            <th>Subject</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Created</th>
+                        </tr>
 
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <a href="#"><span class="ico-circle"><i class="ion-image"></i></span></a>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">[Video #1]</h2>
-                            <p class="s-description text-center">
-                                [Text here]
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                        {% for b in box %}
+                        <tr>
+                            <td>{{b.subject}} </td>
+                            <td>{{b.title}} </td>
+                            <td>{{b.author.fname}} {{b.author.lname}} </td>
+                            <td>{{b.createdate}} </td>
+                            <td data-target="#ExploreModal{{ b.id }}" data-toggle="modal">Show </td>
+                            
+                        </tr>
 
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <a href="#"><span class="ico-circle"><i class="ion-image"></i></span></a>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">[Video #2]</h2>
-                            <p class="s-description text-center">
-                                [Text here]
-                            </p>
-                        </div>
-                    </div>
+                        {% endfor %}
+                    </table>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <a href="#"><span class="ico-circle"><i class="ion-image"></i></span></a>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">[Video #3]</h2>
-                            <p class="s-description text-center">
-                                [Text here]
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <a href="#"><span class="ico-circle"><i class="ion-image"></i></span></a>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">[Video #4]</h2>
-                            <p class="s-description text-center">
-                                [Text here]
-                            </p>
+                {% for b in box %}
+                <!-- Modal -->
+                <div class="modal fade" id="ExploreModal{{ b.id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{b.title}}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{b.body}}</p>
+                                <p></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger"><a style="text-decoration: none; color:white" href="/deletevideo/{{b.id}}">Delete</a></button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"><a style="text-decoration: none; color:white" target = "_blank" href="{{b.vlink}}">Watch</a></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <a href="#"><span class="ico-circle"><i class="ion-image"></i></span></a>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">[Video #5]</h2>
-                            <p class="s-description text-center">
-                                [Text here]
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <a href="#"><span class="ico-circle"><i class="ion-image"></i></span></a>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">[Video #6]</h2>
-                            <p class="s-description text-center">
-                                [Text here]
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+
+
+
             </section>
 
             <a href="#page-top" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
