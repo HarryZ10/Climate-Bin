@@ -9,9 +9,9 @@
 ## 2) Audience
 ### Which specific demographics would use your app?
 
-> The intended demographics are 7+ (age); minority groups; elementary, middle, and high school students; college students; millenials, baby boomers, and the silent generation. This APP is intended to be rated E for everyone. Some content might be rated PG-13,17 or PG.
+> The intended demographics are 12+ (age); minority groups; elementary, middle, and high school students; college students; millenials, baby boomers, and the silent generation. This APP is intended to be rated E for everyone. Some video/photo content uploaded by users might be rated PG-13,17 or PG.
 
 ## 3) Sequence of features
 ### What features are in this MVP? What are the next features you want to build?
 
-In progress
+> In this MVP, the user can EDIT and UPDATE their profile page. The user can UPLOAD, DELETE, and WATCH videos of climate change. The next stage is to refine the EXPLORE page, so that users can EDIT their resource. Also in the next stages, the user will be able to STAR and FAVORITE resources not only videos but also photos. Photo uploads will come in the Beta version as well.
