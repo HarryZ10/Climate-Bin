@@ -22,7 +22,7 @@ from .scopes import *
 
 from flask import render_template, redirect, url_for, request, session, flash
 from app.classes.data import User
-from app.classes.forms import UserForm
+from app.classes.forms import UserForm, ProfileForm
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
 from urllib.parse import urlparse
@@ -38,7 +38,7 @@ import os
 CLIENT_SECRETS_FILE = "credentials.json"
 
 # List of email addresses for Admin users
-admins = ['s_harry.zhu@ousd.org','harryzhu45@gmail.com']
+admins = ['harryzhu45@gmail.com']
 
 # This code is run right after the app starts up and then not again. It defines a few universal things
 # like is the app being run on a local computer and what is the local timezone
@@ -48,6 +48,7 @@ def before_first_request():
     if request.url_root[8:11] == '127' or request.url_root[8:17] == 'localhost':
         session['devenv'] = True
         session['localtz'] = 'America/Los_Angeles'
+        
     else:
         session['devenv'] = False
         session['localtz'] = 'UTC'
@@ -137,7 +138,6 @@ def login():
     # set data to be the dictionary that contains all the information about the user that google has.  You can see this 
     # information displayed via the current profile template
     data = people_service.people().get(resourceName='people/me', personFields='names,emailAddresses,photos').execute()
-
     # get the google email address from the data object and check to see if the user has an ousd email account.  
     # Deny access if they do not
     # if not data['emailAddresses'][0]['value'][-8:] == "ousd.org":
@@ -175,12 +175,15 @@ def login():
         # Create a newUser object filled with the google values and the values that were just created
         newUser = User(
                         gid=data['emailAddresses'][0]['metadata']['source']['id'], 
-                        gfname=data['names'][0]['displayName'], 
-                        fname=data['names'][0]['givenName'], 
+                        gfname=data['names'][0]['givenName'], 
+                        glname=data['names'][0]['familyName'],
+                        fname=data['names'][0]['givenName'],
+                        lname=data['names'][0]['familyName'],
                         email=data['emailAddresses'][0]['value'],
                         image=data['photos'][0]['url'],
                         role=role,
                         admin=admin
+                        
                        )
         # save the newUser
         newUser.save()
@@ -194,12 +197,13 @@ def login():
     # to store values that you want to be able to access while a user is logged in. The va;ues in the sesion
     # list can be added, changed, deleted as you would with any python list.
     session['currUserId'] = str(currUser.id)
-    session['displayName'] = currUser.fname+" "+str(currUser.lname)
+    session['displayName'] = str(currUser.fname) + " " + str(currUser.lname)
     session['gid'] = data['emailAddresses'][0]['metadata']['source']['id']
     # this stores the entire Google Data object in the session
     session['gdata'] = data
     session['role'] = currUser.role
     session['admin'] = admin
+
     # The return_URL value is set above in the before_request route. This enables a user you is redirected to login to
     # be able to be returned to the page they originally asked for.
     return redirect(session['return_URL'])
@@ -208,57 +212,46 @@ def login():
 
 
 #This is the profile page for the logged in user
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    # get the current user object via the mondoengine User Class using the get method() which returns one and only one record.
-    # this works because gid is defined in the data class to be unique 
+    
     currUser=User.objects.get(gid=session['gid'])
-    #Send the user to the profile.html template
-    return render_template("profile.html", currUser=currUser, data=session['gdata'], isIndex=False)
-
-# to get an in depth description of how creating, editing and deleting database recodes work check
-# out the feedback.py file.
-# This route anables the current user to edit some values in their profile.
-@app.route('/editprofile', methods=['GET', 'POST'])
-def editprofile():
-
-    # create a form object from the UserForm Class
     form = UserForm()
-    # get the user object that is going to be edited which will be the current user so we user the 
-    # googleId from the active session to load the right record
+    pform = ProfileForm()
     editUser = User.objects.get(gid=session['gid'])
+    
+    if pform.validate_on_submit():
+        editUser.update(
+            skills = pform.skills.data,
+            country = pform.country.data,
+            biography = pform.biography.data
+        )
+        
+        return redirect(url_for('profile'))
 
-    # If the user has already submitted the edit form and it is valid the the method form.validate_on_submit()
-    # will be True and we can take the values from the form object and use them to update the database record 
-    # for that user
+    pform.skills.data = editUser.skills
+    pform.biography.data = editUser.biography
+    pform.country.data = editUser.country
+
     if form.validate_on_submit():
         editUser.update(
-            # the values to the left are the data attributes from the User data class
-            # the values to the right are the values the user submitted via the form 
-            # that wtforms puts in to the form object
             fname = form.fname.data,
             lname = form.lname.data,
             pronouns = form.pronouns.data,
-            image = form.image.data,
-            birthdate = form.birthdate.data
+            birthday = form.birthday.data,
+            gfname = session['gdata']['names'][0]['givenName'],
+            # glname = session['gdata']['names'][0]['familyName']
         )
-
-        # after the profile is updated, send the user to the profile page
+        
         return redirect(url_for('profile'))
 
-    # if form.validate_on_submit() was false then we need to present the form back to the user pre-populated
-    # with the values that the user is allowed to change
-    # The values on the left are the values for each field in the form object
-    # The values on the right are the values for the user object that was retrieved ealier in this function
-    form.fname.data = editUser.fname
-    form.lname.data = editUser.lname
-    form.pronouns.data = editUser.pronouns
-    form.image.data = editUser.image
-    form.birthdate.data = editUser.birthdate
-
-    # render the editprofile template and send the pre-populated form object.
-    return render_template('editprofile.html', form=form)
+        form.fname.data = editUser.fname
+        form.lname.data = editUser.lname
+        form.pronouns.data = editUser.pronouns
+        form.birthday.data = editUser.birthday
     
+    return render_template("profile.html", currUser=currUser, data=session['gdata'], pform=pform, form=form, isIndex=False,isProfile=True)
+
 #######################################################################################
 ### THE CODE BELOW IS ALL GOOGLE AUTHENTICATION CODE AND PROBABLY SHOULD NOT BE TOUCHED
 

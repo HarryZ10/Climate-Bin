@@ -156,7 +156,7 @@ a:hover {
 
 .bg-image {
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: local;
   background-size: cover;
   background-position: center center;
   background-image: url(../static/overlay-bg.jpg)
@@ -191,6 +191,41 @@ a:hover {
 .table-cell {
   display: table-cell;
   vertical-align: middle;
+}
+
+table {
+  border: 0px solid lightgray;
+}
+
+table.sized th {
+  background-color: silver;
+  text-align: center;
+  padding: 10px;
+  width: 200px;
+
+}
+table.sized td{
+  width: 600px;
+  border: 0px dotted silver;
+  word-break: break-all;
+}
+
+table.uploads th{
+  width: 500px;
+  border: 0px dotted silver;
+  background-color: silver;
+  text-align: center;
+  padding: 10px;
+}
+
+table.uploads td{
+  width: 500px;
+  word-break: break-all;
+}
+
+input#image{
+ width: 100px;
+ height: 20px;
 }
 
 /*--/ Sections /--*/
@@ -1230,7 +1265,6 @@ div#submissions.box-shadow-full {
 /*======================================
 //--//-->   FOOTER
 ======================================*/
-
 footer {
   text-align: center;
   padding-bottom: 4rem;

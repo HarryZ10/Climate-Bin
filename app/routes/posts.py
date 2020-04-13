@@ -12,6 +12,8 @@ from app.classes.data import Post, Comment, Feedback
 from app.classes.forms import PostForm, CommentForm
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
+from bson.objectid import ObjectId
+
 import requests
 import datetime
 

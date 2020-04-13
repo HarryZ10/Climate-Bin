@@ -38,10 +38,14 @@ class User(Document):
     pronouns = StringField()
     fname = StringField()
     lname = StringField()
+    skills = StringField()
+    biography = StringField()
+    country = StringField()
+
     # URLField() holds a URL or a link to a webpage
     image = URLField()
     # DateField() holds just a date.  There is also a DateTimeField()
-    birthdate = DateField()
+    birthday = DateField()
     # This is how you set the default sorting.  You can also sort records after you retreive them in the route.
     meta = {
         'ordering': ['+lname', '+fname']

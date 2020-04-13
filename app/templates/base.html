@@ -23,9 +23,6 @@
     {{ moment.include_jquery() }}
     {{ moment.include_moment() }}
 
-</head>
-
-<body>
     <nav class="navbar navbar-b scrolling-navbar navbar-trans fixed-top navbar-expand-md" id="mainNav">
         <a class="navbar-brand" href="/">Climate Bin</a>
 
@@ -73,6 +70,15 @@
 
     {% include 'includes/_navbar.html' %}
 
+</head>
+
+
+{% if isProfile %}
+<body style="background-color: #0078ff; padding-top:100px">
+{% else %}
+<body>
+{% endif %}
+
     <div class="container.fluid">
         {% block body %}
         {% endblock %}
@@ -94,9 +100,13 @@
         {% endwith %}
 
     </div>
+    
+    {% if isIndex %}
     <footer class="page-footer font-small indigo">
-        <div class="footer-copyright text-center py-4"><a href="https://oaklandtech.com" style="text-decoration: none;"> Computer Science Academy Capstone</a></div>
+        <div class="footer-copyright text-center py-4"><a href="https://oaklandtech.com" style="text-decoration: none;">
+                Computer Science Academy Capstone</a></div>
     </footer>
+    {% endif %}
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

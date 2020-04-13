@@ -36,13 +36,32 @@ class UserForm(FlaskForm):
     # A SelectField is how you create a dropdown list of values.  Each value in the dropdown
     # is a tuple with two values. The first is what is stored in the database record the second
     # is what is shown in the dorwpdown list.  Most of the time they are the same.  
-    pronouns = SelectField(choices=[('He/Him', 'He/Him'),('She/Her','She/Her'),('They/Them','They/Them'),('Any/All','Any/All')])
+    pronouns = SelectField(choices=[('He/Him', 'He/Him'),
+                                    ('She/Her','She/Her'),
+                                    ('They/Them','They/Them')])
+    
     # The image field is not an upload of an image file but instead is a link to an image that is publically
     # available on the web. The is a vlaidator that checks that is is a propoerly formatted url. 
-    image = URLField('Image URL', validators=[url()])
-    birthdate = DateField()
+    # image = URLField('Image URL', validators=[url()])
+    birthday = DateField()
+    
     # all forms must have a submit
     submit = SubmitField("Submit")
+
+class ProfileForm(FlaskForm):
+    skills = TextAreaField()
+    biography = TextAreaField()
+    submit = SubmitField()
+    country = SelectField(choices=[('US', 'United States of America'),
+                                   ('CA','Canada'),
+                                   ('Spain','Spain'),
+                                   ('Italy','Italy'),
+                                   ('Germany','Germany'),
+                                   ('France', 'France'),
+                                   ('UK','United Kingdom'),
+                                   ('China','China'),
+                                   ('HK','Hong Kong')])
+
 
 # This is the form for creating and editing a Post.
 class PostForm(FlaskForm):

@@ -5,8 +5,235 @@ via google and via the User data object-->
 {% extends "base.html" %}
 {% block body %}
 
-<body id="page-top">
-    <div class="jumbotron text-center" style="background-color: #0078ff; border-radius: 0 !important;">
+<div class="container">
+    <div class="jumbotron rounded text-center">
+        <div class="span3 well">
+            <a href="#user-bio" data-toggle="modal" data-target="#profile-modal"><img class="rounded"
+                    src="{{currUser['image']}}" name="aboutme" width="140" height="140" class="img-circle"></a>
+            <br>
+            <br>
+
+            <h3>{{ session['displayName'] }}</h3>
+            <em>"Click my profile icon for more information!"</em>
+            <br>
+            <br>
+            <button class="btn btn-primary"><a href="#edit-profile" data-target="#edit-profile-modal"
+                    data-toggle="modal" style="text-decoration: none; color:white;">Edit Information</a></button>
+            <br>
+            <hr>
+            <center>
+                <br>
+                <h4>User Information</h4>
+                <br>
+            </center>
+            <table class='table sized table-sm'>
+                {% for item in currUser %}
+                <tr>
+                    <th><strong>{{item}}</strong></th>
+                    <td> {{ currUser[item] }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            {% if currUser['admin'] == True %}
+            <center>
+                <br>
+                <h4>Google Data Objects</h4>
+                <h6 style="color: red;"><em>Admin use only.</em></h6>
+                <br>
+            </center>
+            <table class='table sized table-sm'>
+                {% for item in data %}
+                <tr>
+                    <th><strong>{{item}}</strong></th>
+                    <td> {{ data[item] }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            <center>
+                <br>
+                <h4>Session Objects</h4>
+                <h6 style="color: red;"><em>Admin use only.</em></h6>
+                <br>
+            </center>
+            <table class='table sized table-sm'>
+                {% for item in session %}
+                <tr>
+                    <th><strong>{{item}}</strong></th>
+                    <td> {{ session[item] }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">More About {{ session['displayName'] }}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <img class="rounded" src="{{currUser['image']}}" name="aboutme" width="140" height="140"
+                            border="0" class="img-circle"></a><br>
+                        <br>
+                        <h3 class="media-heading">{{ session['displayName'] }}, <small>
+                                {{ currUser['country'] }}</small></h3>
+                        <br>
+                        <span><strong>Skills: </strong></span>
+                        <span class="label label-warning">{{currUser['skills']}}</span>
+                    </center>
+                    <hr>
+                    <center>
+                        <p class="text-center"><strong>Biography</strong><br>
+                            {{currUser['biography']}}</p>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button class="btn btn-primary"><a href="#edit-skills-bio" data-target="#edit-skillsbio-modal"
+                                data-dismiss="modal" data-toggle="modal"
+                                style="text-decoration: none; color:white;">Update</a></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="edit-skillsbio-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Update {{ session['displayName'] }}'s Skills and Biography
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <h6 style="color:red">Note: All fields are required.</h6>
+
+                        {% for field in pform.errors %}
+                        {% for error in pform.errors[field] %}
+                        <div class="alert alert-error">
+                            <strong>Error! </strong>{{field}}: {{error}}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+
+                        <form method=post>
+                            {{ pform.csrf_token() }}
+                            <table class="table">
+                                <tr>
+                                    <td>{{ pform.skills.label }}</td>
+                                    <td>{{ pform.skills() }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ pform.biography.label }}
+                                    </td>
+                                    <td>
+                                        {{ pform.biography() }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ pform.country.label }}</td>
+                                    <td>{{ pform.country() }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{pform.submit()}}</td>
+                                </tr>
+                            </table>
+                        </form>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Update {{ session['displayName'] }}'s Profile</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <h6 style="color:red">Note: All fields are required.</h6>
+
+                        {% for field in form.errors %}
+                        {% for error in form.errors[field] %}
+                        <div class="alert alert-error">
+                            <strong>Error!</strong>{{field}}: {{error}}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+
+                        <form method=post>
+                            <table class="table">
+                                <!--This displays the form from the form abject that was passed to the template. If the fileds have values in them
+                    that were set by the routes code, then it will be editing.  If they are empty it 
+                    will create a new secion. -->
+                                <tr>
+                                    <td>{{ form.hidden_tag() }}{{ form.fname.label }}</td>
+                                    <td>{{ form.fname }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ form.lname.label }}</td>
+                                    <td>{{ form.lname() }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ form.pronouns.label }}</td>
+                                    <td>{{ form.pronouns() }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ form.birthday.label }}</td>
+                                    <td>{{ form.birthday() }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{form.submit()}}</td>
+                                </tr>
+                            </table>
+                        </form>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" class="back-to-top"><span class="iconify" data-icon="ion:arrow-up-circle-sharp" data-inline="false"
+        style="color: #0078ff;" data-width="72" data-height="72"></span></a>
+
+
+{% endblock %}
+
+<!-- <div class="jumbotron text-center" style="background-color: #0078ff; border-radius: 0 !important;">
         <h1 style="color:white;">Profile for {{ session['displayName'] }}</h1>
         <img src="{{currUser['image']}}" alt="user image"><br>
         <a class="btn btn-primary" href="/editprofile">Edit User</a>
@@ -44,8 +271,4 @@ via google and via the User data object-->
         </table>
 
     </div>
-    <br><br><br>
-</body>
-<a href="#" class="back-to-top"><span class="iconify" data-icon="ion:arrow-up-circle-sharp" data-inline="false"
-    style="color: #0078ff;" data-width="72" data-height="72"></span></a>
-{% endblock %}
+    <br><br><br> -->

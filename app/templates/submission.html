@@ -6,51 +6,49 @@
 
 <!-- BODY CONTENT -->
 <div style="position: absolute; z-index: 99;">
-    <section id="submissions">
+    <section class="bg-image" id="submissions">
         <div class="overlay-mf"></div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="contact-mf">
-                        <div id="submissions" class="box-shadow-full">
-                            <div class="row">
-                                <div id="submissions" class="col-md-6">
-                                    <div class="title-box-2">
-                                        <h3 class="title-center">
-                                            Upload Video
-                                        </h3>
-                                    </div>
-                                    <div>
-                                        <form method="post">
-                                            <table class="table">
-                                                <!--This displays the form from the form abject that was passed to the template. If the fileds have values in them
-                                                    that were set by the routes code, then it will be editing.  If they are empty it 
-                                                    will create a new secion. -->
-                                                <tr>
-                                                    <td>{{ form.hidden_tag() }}{{ form.subject.label }}</td>
-                                                    <td>{{ form.subject() }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ form.title.label }}</td>
-                                                    <td>{{ form.title() }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ form.body.label }}</td>
-                                                    <td>{{ form.body() }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{ form.vlink.label }}</td>
-                                                    <td>{{ form.vlink() }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">{{form.submit()}}</td>
-                                                </tr>
-                                            </table>
-                                        </form>
-                                    </div>
+                        <center>
+                            <div class="jumbotron" style="width: 600px;">
+                                <div class="title-box-2">
+                                    <h3 class="title-center">
+                                        Upload Video
+                                    </h3>
+                                </div>
+                                <div>
+                                    <form method="post">
+                                        <table class="table table-sm centered">
+                                            <!--This displays the form from the form abject that was passed to the template. If the fileds have values in them
+                                                            that were set by the routes code, then it will be editing.  If they are empty it 
+                                                            will create a new secion. -->
+                                            <tr>
+                                                <td>{{ form.hidden_tag() }}{{ form.subject.label }}</td>
+                                                <td>{{ form.subject() }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ form.title.label }}</td>
+                                                <td>{{ form.title() }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ form.body.label }}</td>
+                                                <td>{{ form.body() }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ form.vlink.label }}</td>
+                                                <td>{{ form.vlink() }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">{{form.submit()}}</td>
+                                            </tr>
+                                        </table>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
+                        </center>
                     </div>
                 </div>
             </div>
