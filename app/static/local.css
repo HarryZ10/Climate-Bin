@@ -896,6 +896,10 @@ div#submissions.box-shadow-full {
 ======================================*/
 
 #service {
+  padding-top: 100px;
+}
+
+#livestream{
   position: fixed;
   top: 50%;
   left: 50%;
