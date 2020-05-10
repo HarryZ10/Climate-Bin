@@ -59,11 +59,11 @@ def before_first_request():
 @app.before_request
 def before_request():
     
-    # this checks if the user requests http and if they did it changes it to https
-    if not request.is_secure:
-        url = request.url.replace("http://", "https://", 1)
-        code = 301
-        return redirect(url, code=code)
+    # # this checks if the user requests http and if they did it changes it to https
+    # if not request.is_secure:
+    #     url = request.url.replace("http://", "https://", 1)
+    #     code = 301
+    #     return redirect(url, code=code)
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
     # so that each path this is *not* in this list requires an authorization check.
