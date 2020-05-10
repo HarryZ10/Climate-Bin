@@ -8,3 +8,4 @@ from .posts import *
 from .feedback import *
 from .scopes import *
 from .uploads import *
+from .youtube import *

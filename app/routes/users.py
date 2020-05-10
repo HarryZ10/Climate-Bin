@@ -32,6 +32,7 @@ import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import os
+import datetime as dt
 
 
 # this is a reference to the google project json file you downloaded using the setup.txt instructions
@@ -75,7 +76,7 @@ def before_request():
     # If you have urls that you want your user to be able to see without logging in add them here.
     unauthPaths = ['/','/home','/authorize','/login','/oauth2callback','/static/main.js',
                     '/static/local.css','/static/overlay-bg.jpg','/static/testimonial-2.jpg',
-                    '/static/intro-vid.mp4','/static/interactive.mp4','/explore']
+                    '/static/intro-vid.mp4','/static/interactive.mp4','/explore','/live']
                 
     # this is some tricky code designed to send the user to the page they requested even if they have to first go through
     # a authorization process.
@@ -138,16 +139,20 @@ def login():
     # set data to be the dictionary that contains all the information about the user that google has.  You can see this 
     # information displayed via the current profile template
     data = people_service.people().get(resourceName='people/me', personFields='names,emailAddresses,photos').execute()
+
+
+   
     # get the google email address from the data object and check to see if the user has an ousd email account.  
     # Deny access if they do not
     # if not data['emailAddresses'][0]['value'][-8:] == "ousd.org":
     #     flash('You must have an ousd.org email address to access this site')
     #     return redirect(url_for('logout'))
-
+        
     try:
         # see if the user already exists in the user dtabase document. If they don't then this attempt
         # to create a currUser object from the User class in the data.py file will fail 
         currUser = User.objects.get(gid = data['emailAddresses'][0]['metadata']['source']['id'])
+
         flash(f'Welcome Back! {currUser.fname}')
         # Check the email address in the data object to see if it is in the admins list and update the users
         # database record if needed.
@@ -159,11 +164,13 @@ def login():
             admin = False
             if currUser.admin == True:
                 currUser.update(admin=False)
-        
+    
     except:
         # If the user was not in the database, then set some variables and create them
         # first decide if they are a student or a teacher by checking the front of their email address   
-
+        
+        flash('Birthday not found, please edit your birthday manually.')
+        
         #See if the new user is in the Admins list
         if data['emailAddresses'][0]['value'] in admins:
             admin = True
@@ -175,15 +182,12 @@ def login():
         # Create a newUser object filled with the google values and the values that were just created
         newUser = User(
                         gid=data['emailAddresses'][0]['metadata']['source']['id'], 
-                        gfname=data['names'][0]['givenName'], 
-                        glname=data['names'][0]['familyName'],
+                        gfname=data['names'][0]['givenName'],                         
                         fname=data['names'][0]['givenName'],
-                        lname=data['names'][0]['familyName'],
                         email=data['emailAddresses'][0]['value'],
                         image=data['photos'][0]['url'],
                         role=role,
                         admin=admin
-                        
                        )
         # save the newUser
         newUser.save()
@@ -193,6 +197,28 @@ def login():
         # send the new user a msg
         flash(f'Welcome {currUser.fname}.  A New user has been created for you.')
 
+
+    try:
+        
+        year = data['birthdays'][1]['date']['year']
+        editUser = User.objects.get(gid=session['gid'])
+
+    except KeyError:
+        year = None
+
+        if year:
+            month = data['birthdays'][1]['date']['month']
+            day = data['birthdays'][1]['date']['day']
+            birthday = dt.date(year,month,day)
+            
+            editUser.update(
+                birthday = birthday
+            )
+            
+            flash('User birthday has been imported successfully.')
+        else:
+            flash('User must enter birthday manually.')
+        
     # this code puts several values in the session list variable.  The session variable is a great place
     # to store values that you want to be able to access while a user is logged in. The va;ues in the sesion
     # list can be added, changed, deleted as you would with any python list.
@@ -240,7 +266,7 @@ def profile():
             pronouns = form.pronouns.data,
             birthday = form.birthday.data,
             gfname = session['gdata']['names'][0]['givenName'],
-            # glname = session['gdata']['names'][0]['familyName']
+            glname = session['gdata']['names'][0]['familyName']
         )
         
         return redirect(url_for('profile'))

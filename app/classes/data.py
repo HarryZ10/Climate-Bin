@@ -41,6 +41,12 @@ class User(Document):
     skills = StringField()
     biography = StringField()
     country = StringField()
+    
+    channeltitle = StringField()
+    channelID = StringField()
+    channelProfileColor = StringField()
+    channelURL = StringField()
+    
 
     # URLField() holds a URL or a link to a webpage
     image = URLField()

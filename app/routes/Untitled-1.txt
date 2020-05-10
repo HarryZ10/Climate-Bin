@@ -1,0 +1,21 @@
+[{'metadata': 
+    {'primary': True, 
+    'source': 
+        {'type': 'PROFILE', 
+        'id': '111549781633837700240'}
+    }, 
+    'date':{
+        'month': 5,
+        'day': 17
+    }
+}, 
+    {'metadata': 
+    {'source': {'type': 'ACCOUNT', 'id': '111549781633837700240'}}, 
+    'date': {'year': 2002, 'month': 5, 'day': 17}}]
+
+
+     # year = data['birthdays'][1]['date']['year']
+        # month = data['birthdays'][1]['date']['month']
+        # day = data['birthdays'][1]['date']['day']
+        # birthday = dt.date(year,month,day)
+        # Create a newUser object filled with the google values and the values that were just created
