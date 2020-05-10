@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <!--Put the title of your app here-->
     <title>OT Climate Bin | Home</title>
+
+    <meta property="og:title" content="Climate Bin" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://climatebin.herokuapp.com" />
+    <meta property="og:image" content="{{ url_for('static', filename='favicon.ico') }}" />
+
+    <meta property="twitter:title" content="Climate Bin" />
+    <meta property="twitter:type" content="website" />
+    <meta property="twitter:url" content="http://climatebin.herokuapp.com" />
+    <meta property="twitter:image" content="{{ url_for('static', filename='favicon.ico') }}" />
+
     <!--This is where the link to the favicon and local CSS file goes.  The files that are referenced are in the static folder.-->
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='local.css') }}" type="text/css" />
