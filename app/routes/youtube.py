@@ -42,13 +42,23 @@ def get_youtube():
         json.dump(ytdata, json_file, indent = 4, sort_keys=True)
         
     currUser=User.objects.get(gid=session['gid'])
-    editUser = User.objects.get(gid=session['gid'])
     
-    editUser.update(
-        channelID = ytdata['items'][0]['id'],
-        channeltitle = ytdata['items'][0]['brandingSettings']['channel']['title'],
-        channelProfileColor = ytdata['items'][0]['brandingSettings']['channel']['profileColor'],
-        channelURL = "https://youtube.com/channel/" + ytdata['items'][0]['id']
-    )
+    try:
+        channelid = ytdata['items'][0]['id']
+        editUser = User.objects.get(gid=session['gid'])
+    except IndexError:
+        channelid = None
 
+        if channelid:
+            editUser.update(
+                channelID = ytdata['items'][0]['id'],
+                channeltitle = ytdata['items'][0]['brandingSettings']['channel']['title'],
+                channelProfileColor = ytdata['items'][0]['brandingSettings']['channel']['profileColor'],
+                channelURL = "https://youtube.com/channel/" + ytdata['items'][0]['id']
+            )
+            
+            flash('Youtube has been imported successfully.')
+        else:
+            flash('Youtube data not found.')
+        
     return redirect('profile')
