@@ -54,22 +54,16 @@ def before_first_request():
         session['devenv'] = False
         session['localtz'] = 'UTC'
 
-#This gets the extension type from the URL in order to check whether ignore the ext for authorization and returning URL after logging in
-def get_ext(url):
-    parsed = urlparse(url)
-    root, ext = splitext(parsed.path)
-    return ext[1:]  # or ext[1:] if you don't want the leading '.'
-
 # This runs before every route and serves to make sure users are using a secure site and can only
 # access pages they are allowed to access
 @app.before_request
 def before_request():
     
-    # this checks if the user requests http and if they did it changes it to https
-    if not request.is_secure:
-        url = request.url.replace("http://", "https://", 1)
-        code = 301
-        return redirect(url, code=code)
+    # # this checks if the user requests http and if they did it changes it to https
+    # if not request.is_secure:
+    #     url = request.url.replace("http://", "https://", 1)
+    #     code = 301
+    #     return redirect(url, code=code)
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
     # so that each path this is *not* in this list requires an authorization check.
