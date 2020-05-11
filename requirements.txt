@@ -16,3 +16,4 @@ dnspython==1.16.0
 google_api_python_client==1.7.11
 protobuf==3.11.3
 gunicorn==19.0.0
+flask-sslify==0.1.5

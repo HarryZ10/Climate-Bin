@@ -10,5 +10,5 @@ if __name__ == "__main__":
     os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
     # This line lets you run using a fake version of https for a local computer 
     # You must use https to login to google
-    # app.run(debug=False, ssl_context='adhoc')
-    app.run()
+    app.run(debug=False, ssl_context='adhoc')
+    # app.run()

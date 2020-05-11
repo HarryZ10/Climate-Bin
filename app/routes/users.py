@@ -25,6 +25,8 @@ from app.classes.data import User
 from app.classes.forms import UserForm, ProfileForm
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
+from flask_sslify import SSLify
+
 from urllib.parse import urlparse
 from os.path import splitext
 import requests
@@ -40,6 +42,9 @@ CLIENT_SECRETS_FILE = "credentials.json"
 
 # List of email addresses for Admin users
 admins = ['harryzhu45@gmail.com']
+
+if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
+    sslify = SSLify(app)
 
 # This code is run right after the app starts up and then not again. It defines a few universal things
 # like is the app being run on a local computer and what is the local timezone
@@ -62,7 +67,7 @@ def before_request():
     # this checks if the user requests http and if they did it changes it to https
     # if not request.is_secure:
     #     url = request.url.replace("http://", "https://", 1)
-    #     code = 301
+    #     code = 302
     #     return redirect(url, code=code)
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
@@ -75,13 +80,6 @@ def before_request():
     # this is some tricky code designed to send the user to the page they requested even if they have to first go through
     # a authorization process.
     session['return_URL'] = '/'
-    # try: 
-    #     session['return_URL']
-    # except KeyError:
-    #     session['return_URL'] = '/'
-    
-    # if request.path not in unauthPaths:
-    #     session['return_URL'] = request.full_path
     
     # this sends users back to authorization if the login has timed out or other similar stuff
     if request.path not in unauthPaths:
