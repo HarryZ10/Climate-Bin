@@ -25,7 +25,6 @@ from app.classes.data import User
 from app.classes.forms import UserForm, ProfileForm
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
-from flask_sslify import SSLify
 
 from urllib.parse import urlparse
 from os.path import splitext
@@ -42,9 +41,6 @@ CLIENT_SECRETS_FILE = "credentials.json"
 
 # List of email addresses for Admin users
 admins = ['harryzhu45@gmail.com']
-
-if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
-    sslify = SSLify(app)
 
 # This code is run right after the app starts up and then not again. It defines a few universal things
 # like is the app being run on a local computer and what is the local timezone

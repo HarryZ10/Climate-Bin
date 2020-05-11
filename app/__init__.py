@@ -3,10 +3,13 @@
 
 from mongoengine import *
 from flask import Flask
+from flask_sslify import SSLify
+
 import os
 from flask_moment import Moment
 
 app = Flask(__name__)
+sslify = SSLify(app)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or os.urandom(20)
 
 # you must change the next line to be link to your database at mlab
