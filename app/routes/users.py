@@ -128,6 +128,7 @@ def login():
 
     # Now that the user has credentials, use those credentials to access Google's people api and get the users information
     credentials = google.oauth2.credentials.Credentials(**session['credentials'])
+    
     session['credentials'] = credentials_to_dict(credentials)
     people_service = googleapiclient.discovery.build('people', 'v1', credentials=credentials)
     # set data to be the dictionary that contains all the information about the user that google has.  You can see this 
