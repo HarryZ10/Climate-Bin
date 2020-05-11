@@ -60,10 +60,10 @@ def before_first_request():
 def before_request():
     
     # this checks if the user requests http and if they did it changes it to https
-    if not request.is_secure:
-        url = request.url.replace("http://", "https://", 1)
-        code = 301
-        return redirect(url, code=code)
+    # if not request.is_secure:
+    #     url = request.url.replace("http://", "https://", 1)
+    #     code = 301
+    #     return redirect(url, code=code)
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
     # so that each path this is *not* in this list requires an authorization check.
@@ -230,7 +230,24 @@ def login():
     return redirect(session['return_URL'])
 
 
+# this final route will delete an existing feedback record
+@app.route('/deleteuserinfo/<obj>')
+def deleteuserinfo(obj):
 
+    # retrieve the feedback object to be deleted
+    deleteData = User.objects.get(pk=obj)
+    # load the current user's object to check if they are allowed to delete the feedback record
+    currUser = User.objects.get(gid=session['gid'])
+
+    # check if the current user is the author of the feedback and it is still n new status or the current user is an admin
+    if not (currUser.id == deleteData.author.id) and not currUser.email in admins:
+        # if they do not have the right provleges send them back to the feedback
+        flash(f'You cannot delete this job.')
+        return redirect('/profile')
+
+    # If they do have the privleges then do the delete thang and send the user to a list of all remaining feedback records
+    deleteData.delete()
+    return redirect('/profile') 
 
 #This is the profile page for the logged in user
 @app.route('/profile', methods=['GET', 'POST'])

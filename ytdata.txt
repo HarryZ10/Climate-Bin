@@ -1,9 +1,61 @@
 {
-    "etag": "\"Dn5xIderbhAnUk5TAW0qkFFir0M/xRXnrqH9vCAThvx1uL8LF7Cy1eA\"",
-    "items": [],
+    "etag": "_-h-spWC-j1ezLb8KfLX-7T3dA4",
+    "items": [
+        {
+            "brandingSettings": {
+                "channel": {
+                    "profileColor": "#000000",
+                    "showRelatedChannels": true,
+                    "title": "Harry Zhu"
+                },
+                "hints": [
+                    {
+                        "property": "channel.featured_tab.template.string",
+                        "value": "Everything"
+                    },
+                    {
+                        "property": "channel.modules.show_comments.bool",
+                        "value": "True"
+                    }
+                ],
+                "image": {
+                    "bannerImageUrl": "http://s.ytimg.com/yts/img/channels/c4/default_banner-vfl7DRgTn.png"
+                }
+            },
+            "etag": "3kt-zoPLu3-c_btauAvgCswTH48",
+            "id": "UCAghVTy0jT75Cun74BfFiJQ",
+            "kind": "youtube#channel",
+            "snippet": {
+                "description": "",
+                "localized": {
+                    "description": "",
+                    "title": "Harry Zhu"
+                },
+                "publishedAt": "2014-07-30T00:35:16Z",
+                "thumbnails": {
+                    "default": {
+                        "height": 88,
+                        "url": "https://yt3.ggpht.com/a/AATXAJzEi7em4PNXASpWQ-fIYkubC3Xt21u9TDRd4g=s88-c-k-c0xffffffff-no-rj-mo",
+                        "width": 88
+                    },
+                    "high": {
+                        "height": 800,
+                        "url": "https://yt3.ggpht.com/a/AATXAJzEi7em4PNXASpWQ-fIYkubC3Xt21u9TDRd4g=s800-c-k-c0xffffffff-no-rj-mo",
+                        "width": 800
+                    },
+                    "medium": {
+                        "height": 240,
+                        "url": "https://yt3.ggpht.com/a/AATXAJzEi7em4PNXASpWQ-fIYkubC3Xt21u9TDRd4g=s240-c-k-c0xffffffff-no-rj-mo",
+                        "width": 240
+                    }
+                },
+                "title": "Harry Zhu"
+            }
+        }
+    ],
     "kind": "youtube#channelListResponse",
     "pageInfo": {
-        "resultsPerPage": 0,
-        "totalResults": 0
+        "resultsPerPage": 1,
+        "totalResults": 1
     }
 }

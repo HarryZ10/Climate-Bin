@@ -33,6 +33,8 @@ via google and via the User data object-->
                 <tr>
                     <th><strong>{{item}}</strong></th>
                     <td> {{ currUser[item] }}</td>
+                    <td><button class="btn btn-danger"><a href="/deleteuserinfo/{{currUser[item]}}"
+                                style="text-decoration: none; color:white;">Delete</a></button></td>
                 </tr>
                 {% endfor %}
 

@@ -80,6 +80,7 @@ def deletevideo(videoID):
     # If they do have the privleges then do the delete thang and send the user to a list of all remaining feedback records
     deleteVideo.delete()
     return redirect('/explore') 
+
 # @app.route('/newcomment/<postId>', methods=['GET', 'POST'])
 # def newcomment(postId):
    
