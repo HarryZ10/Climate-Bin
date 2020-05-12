@@ -61,8 +61,11 @@ def before_first_request():
 def before_request():
     
     # this checks if the user requests http and if they did it changes it to https
-    if not request.url.startswith('https'):
-        return redirect(request.url.replace('http', 'https', 1))
+    # if request.headers.get('X-Forwarded-Proto') == 'http':
+    #     url = request.url.replace('http://', 'https://', 1)
+    #     print("redirected to https?")
+    #     code = 301
+    #     return redirect(url, code=code)
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
     # so that each path this is *not* in this list requires an authorization check.
