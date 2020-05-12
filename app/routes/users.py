@@ -66,6 +66,10 @@ def before_request():
     #     print("redirected to https?")
     #     code = 301
     #     return redirect(url, code=code)
+    
+    if request.endpoint in app.view_functions and request.headers.get('X-Forwarded-Proto', None) == 'http':
+        return redirect(request.url.replace('http://', 'https://'))
+    
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
     # so that each path this is *not* in this list requires an authorization check.
