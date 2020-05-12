@@ -63,6 +63,7 @@ def before_request():
     # this checks if the user requests http and if they did it changes it to https
     if request.headers.get('X-Forwarded-Proto') == 'http':
         url = request.url.replace('http://', 'https://', 1)
+        flash('redirected to https')
         code = 301
         return redirect(url, code=code)
 
