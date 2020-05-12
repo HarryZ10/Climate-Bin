@@ -4,6 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <!--Put the title of your app here-->
+
+    {% if isProfile %}
+    <title>Climate Bin | Profile</title>
+    {% endif %}
+
+    {% if isExplore %}
+    <title>Climate Bin | Explore</title>
+    {% endif %}
+
+    {% if isLive %}
+    <title>Climate Bin | Live</title>
+    {% endif %}
+
+    {% if isUpload %}
+    <title>Climate Bin | Upload</title>
+    {% endif %}
+
+    {% if isFeedback %}
+    <title>Climate Bin | Feedback</title>
+    {% endif %}
+
+    <!-- {% if isProfile %}
+    <title>Climate Bin | Profile</title>
+    {% endif %} -->
+
     <title>OT Climate Bin | Home</title>
 
     <meta property="og:title" content="Climate Bin" />

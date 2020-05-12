@@ -21,7 +21,7 @@ from bson.objectid import ObjectId
 def boxes():
  
     box = Video.objects()
-    return render_template("interactive-resources.html", box=box)
+    return render_template("interactive-resources.html", isExplore=True, box=box)
 
 # @app.route('/explore/<uploadId>')
 # def post(uploadId):
@@ -60,7 +60,7 @@ def upload(url):
 
         return redirect('/explore')
    
-    return render_template('submission.html', form=form)
+    return render_template('submission.html', isUpload=True, form=form)
 
 # this final route will delete an existing feedback record
 @app.route('/deletevideo/<videoID>')

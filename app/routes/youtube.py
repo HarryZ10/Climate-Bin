@@ -20,7 +20,7 @@ import json
 
 @app.route("/live")
 def live():
-    return render_template("livestream.html")
+    return render_template("livestream.html", isLive=True)
 
 @app.route("/getyoutube")
 def get_youtube():
@@ -46,7 +46,7 @@ def get_youtube():
     try:
         channelid = ytdata['items'][0]['id']
         editUser = User.objects.get(gid=session['gid'])
-    except IndexError:
+    except KeyError:
         channelid = None
 
         if channelid:

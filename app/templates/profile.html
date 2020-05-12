@@ -4,42 +4,124 @@ via google and via the User data object-->
 
 {% extends "base.html" %}
 {% block body %}
+<div class="container">
+    <div class="jumbotron rounded text-center" style="background-color: #fff;">
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content py-4" style="padding-left:20px">
+                    <div class="tab-pane active" id="profile">
+                        <h4 class="mb-3">Your Profile</h4>
+                        <div class="row">
+                            <div class="mx-auto col-md-20">
+                                <table class="table table-sm" style="border: 0px dotted silver;">
+                                    <br>
+                                    <tr>
+                                        <td></td>
+                                        <td><strong>First Name</strong></td>
+                                        <td><strong>Last Name</strong></td>
+                                        <td><strong>Email</strong></td>
+                                        <td><strong>Birthday</strong></td>
+                                        <td><strong>Pronouns</strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th><strong>Basic Information</strong></th>
+                                        <td> {{ currUser['fname'] }}</td>
+                                        <td> {{ currUser['lname'] }}</td>
+                                        <td> {{ currUser['email'] }}</td>
+                                        <td> {{ currUser['birthday'] }}</td>
+                                        <td> {{ currUser['pronouns'] }}</td>
+                                    </tr>
+                                </table>
+                                <table class="table table-sm" style="border: 0px dotted silver;">
+                                    <br>
+                                    <tr>
+                                        <td></td>
+                                        <td><strong>ID</strong></td>
+                                        <td><strong>Google ID</strong></td>
+                                        <td><strong>YouTube ID</strong></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th><strong>Advanced</strong></th>
+                                        <td> {{ currUser['id'] }}</td>
+                                        <td> {{ currUser['gid'] }}</td>
+                                        <td> {{ currUser['channelID'] }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link
+                                        to the latest summary report from the..
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="float-right font-weight-bold">Yesterday</span> There has been a
+                                        request on your account since that was..
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices
+                                        quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt
+                                        ullamcorper eros eget luctus.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix
+                                        for tibulum tincidunt ullamcorper eros.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-1 text-center">
+                <h4 class="mb-3">{{ session['displayName'] }}</h4>
+                <br>
+                <a href="#" data-toggle="modal" data-target="#profile-modal"><img width="140" height="140"
+                        src="{{currUser['image']}}" class="rounded mx-auto img-fluid img-circle d-block"
+                        alt="avatar"></a>
+                <br>
+                <em>"Click my profile icon for more information!"</em>
+                <br>
+                <br>
+                <button class="btn btn-primary"><a href="#edit-profile" data-target="#edit-profile-modal"
+                        data-toggle="modal" style="text-decoration: none; color:white;">Edit Information</a></button>
+                <button class="btn btn-primary"><a href="/getyoutube" style="text-decoration: none; color:white;">Import
+                        Youtube Data</a></button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container">
+    {% if currUser['admin'] == True %}
     <div class="jumbotron rounded text-center">
         <div class="span3 well">
-            <a href="#user-bio" data-toggle="modal" data-target="#profile-modal"><img class="rounded"
-                    src="{{currUser['image']}}" name="aboutme" width="140" height="140" class="img-circle"></a>
-            <br>
-            <br>
-
-            <h3>{{ session['displayName'] }}</h3>
-            <em>"Click my profile icon for more information!"</em>
-            <br>
-            <br>
-            <button class="btn btn-primary"><a href="#edit-profile" data-target="#edit-profile-modal"
-                    data-toggle="modal" style="text-decoration: none; color:white;">Edit Information</a></button>
-            <button class="btn btn-primary"><a href="/getyoutube" style="text-decoration: none; color:white;">Import
-                    Youtube Data</a></button>
-            <br>
-            <hr>
-            <center>
-                <br>
-                <h4>User Information</h4>
-                <br>
-            </center>
-            <table class='table sized table-sm'>
-                {% for item in currUser %}
-                <tr>
-                    <th><strong>{{item}}</strong></th>
-                    <td> {{ currUser[item] }}</td>
-                    <td><button class="btn btn-danger"><a href="/deleteuserinfo/{{currUser[item]}}"
-                                style="text-decoration: none; color:white;">Delete</a></button></td>
-                </tr>
-                {% endfor %}
-
-            </table>
-            {% if currUser['admin'] == True %}
             <center>
                 <br>
                 <h4>Google Data Objects</h4>
@@ -70,9 +152,10 @@ via google and via the User data object-->
                 {% endfor %}
 
             </table>
-            {% endif %}
         </div>
     </div>
+    {% endif %}
+
     <!-- Modal -->
     <div class="modal fade" id="profile-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
@@ -236,43 +319,3 @@ via google and via the User data object-->
 
 
 {% endblock %}
-
-<!-- <div class="jumbotron text-center" style="background-color: #0078ff; border-radius: 0 !important;">
-        <h1 style="color:white;">Profile for {{ session['displayName'] }}</h1>
-        <img src="{{currUser['image']}}" alt="user image"><br>
-        <a class="btn btn-primary" href="/editprofile">Edit User</a>
-    </div>
-
-    <div>
-        <h3>The User Object from this site</h3>
-        <table class="table">
-            {% for item in currUser %}
-            <tr>
-                <td>{{item}}</td>
-                <td> {{ currUser[item] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-
-        <h3>The Data Object from Google</h3>
-        <table class="table">
-            {% for item in data %}
-            <tr>
-                <td>{{ item }}</td>
-                <td>{{data[item]}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-
-        <h3>The Session Object</h3>
-        <table class="table table=sm">
-            {% for item in session %}
-            <tr>
-                <td>{{ item }}</td>
-                <td>{{session[item]}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-
-    </div>
-    <br><br><br> -->

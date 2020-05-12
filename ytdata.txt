@@ -1,5 +1,5 @@
 {
-    "etag": "_-h-spWC-j1ezLb8KfLX-7T3dA4",
+    "etag": "vOumC0X8-Agk4LX-MeYX1Ehjgig",
     "items": [
         {
             "brandingSettings": {
@@ -10,19 +10,19 @@
                 },
                 "hints": [
                     {
-                        "property": "channel.featured_tab.template.string",
-                        "value": "Everything"
-                    },
-                    {
                         "property": "channel.modules.show_comments.bool",
                         "value": "True"
+                    },
+                    {
+                        "property": "channel.featured_tab.template.string",
+                        "value": "Everything"
                     }
                 ],
                 "image": {
                     "bannerImageUrl": "http://s.ytimg.com/yts/img/channels/c4/default_banner-vfl7DRgTn.png"
                 }
             },
-            "etag": "3kt-zoPLu3-c_btauAvgCswTH48",
+            "etag": "hjsblIc0sm0Mpfd_cAnfg5SWUWY",
             "id": "UCAghVTy0jT75Cun74BfFiJQ",
             "kind": "youtube#channel",
             "snippet": {

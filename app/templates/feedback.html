@@ -2,6 +2,7 @@
 
 {% block body %}
 
+
 <body style="padding-top:100px; background-color:#0078ff;">
     <div class="container">
         <div class="jumbotron">
@@ -62,15 +63,15 @@
                     <table class="table table-active table-sm">
                         <tr>
                             <td>Conversation</td>
-                            <td><a class="btn btn-primary btn-sm" href="/feedbackpost/{{fback.id}}">New</a></td>
+                            <td><a class="btn btn-primary btn-sm" href="/feedback/{{fback.id}}">New</a></td>
                             <td></td>
                         </tr>
                         {% for fbackpost in fbackposts %}
                         <tr>
                             <td>{{fbackpost.user.fname}} {{fbackpost.user.lname}} </td>
-                            <td><a href="/post/{{fbackpost.id}}">{{fbackpost.subject}}</a></td>
+                            <td><a href="/feedback/{{fbackpost.id}}">{{fbackpost.subject}}</a></td>
                             <td>{{fbackpost.body}}</td>
-                            <td><a class="btn btn-primary btn-sm" href="/post/{{fbackpost.id}}">Reply</a></td>
+                            <td><a class="btn btn-primary btn-sm" href="/feedback/{{fbackpost.id}}">Reply</a></td>
                         </tr>
                         {% endfor %}
                     </table>

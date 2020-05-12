@@ -20,7 +20,7 @@ def feedbackall():
     # feedback records in an object. 
     fbacks = Feedback.objects()
     # end the function and send all the feedback records (fbacks) that were retrieved to the fedbackall.html template
-    return render_template("feedbackall.html", fbacks=fbacks)
+    return render_template("feedbackall.html", isFeedback=True, fbacks=fbacks)
 
 # This route retrieves for display one feedback item
 @app.route('/feedback/<feedbackid>')

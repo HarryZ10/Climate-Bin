@@ -22,8 +22,6 @@ class UploadForm(FlaskForm):
     submit = SubmitField("Submit")
 
 
-
-
 # This is the form for creating and updating users. The fields that are listed here in the UserForm
 # are the one's that the user is allowed to create and edit. You can see how this form is shown to the user in the 
 # edituser.html template. You can see how the editing and creating users is done in the users.py route specifically
