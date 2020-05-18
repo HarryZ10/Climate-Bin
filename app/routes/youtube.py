@@ -4,7 +4,7 @@ from .scopes import *
 
 from flask import render_template, redirect, url_for, request, session, flash
 from app.classes.data import User
-from app.routes.users import credentials_to_dict, CLIENT_SECRETS_FILE
+from app.routes.users import credentials_to_dict
 from app.classes.forms import UserForm, ProfileForm
 from requests_oauth2.services import GoogleClient
 from requests_oauth2 import OAuth2BearerToken
