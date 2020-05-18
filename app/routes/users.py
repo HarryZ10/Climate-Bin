@@ -67,6 +67,7 @@ def before_request():
     #     return redirect(url, code=code)
     
     if request.headers.get('X-Forwarded-Proto', None) == 'http':
+        flash("Redirected to https")
         return redirect(request.url.replace('http://', 'https://'))
     
 
