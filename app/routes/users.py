@@ -68,7 +68,7 @@ def before_request():
     
     if not request.is_secure:
         flash("Redirected to https")
-        return redirect(request.url.replace('http://', 'https://'), 301)
+        return redirect(request.url.replace('http://', 'https://', 1), 301)
     
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
