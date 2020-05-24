@@ -58,10 +58,17 @@ def before_first_request():
 # access pages they are allowed to access
 @app.before_request
 def before_request():
-
-    # if not request.is_secure:
-    #     flash("Redirected to https")
-    #     return redirect(request.url.replace('http://', 'https://', 1), 301)
+    
+    # this checks if the user requests http and if they did it changes it to https
+    # if request.headers.get('X-Forwarded-Proto') == 'http':
+    #     url = request.url.replace('http://', 'https://', 1)
+    #     print("redirected to https?")
+    #     code = 301
+    #     return redirect(url, code=code)
+    
+    if not request.is_secure:
+        flash("Redirected to https")
+        return redirect(request.url.replace('http://', 'https://', 1), 301)
     
 
     # Create a list of all the paths that do not need authorization or are part of authorizing
