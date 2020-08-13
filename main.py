@@ -9,5 +9,5 @@ if __name__ == "__main__":
     # This line is a way to not use https. leave it commented out unless you have a problem
     # os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
     os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
-    # app.run(debug=True, ssl_context='adhoc')
-    app.run(debug=True)
+    app.run(debug=True, ssl_context='adhoc')
+    # app.run(debug=True)

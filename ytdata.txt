@@ -1,17 +1,22 @@
 {
-    "etag": "vOumC0X8-Agk4LX-MeYX1Ehjgig",
+    "etag": "ftXRaDjsmNYkoeGGnMLmXQugSpI",
     "items": [
         {
             "brandingSettings": {
                 "channel": {
+                    "country": "US",
+                    "defaultTab": "Featured",
+                    "description": "Three words.\n\nI. Quit. Youtube.\n\n--\n\nGoodbye!",
+                    "featuredChannelsTitle": "..",
+                    "keywords": "Harry2Pro Games",
                     "profileColor": "#000000",
-                    "showRelatedChannels": true,
-                    "title": "Harry Zhu"
+                    "showBrowseView": true,
+                    "title": "Harry"
                 },
                 "hints": [
                     {
-                        "property": "channel.modules.show_comments.bool",
-                        "value": "True"
+                        "property": "channel.banner.mobile.medium.image.url",
+                        "value": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w640-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj"
                     },
                     {
                         "property": "channel.featured_tab.template.string",
@@ -19,37 +24,51 @@
                     }
                 ],
                 "image": {
-                    "bannerImageUrl": "http://s.ytimg.com/yts/img/channels/c4/default_banner-vfl7DRgTn.png"
+                    "bannerImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerMobileExtraHdImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1440-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerMobileHdImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1280-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerMobileImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w640-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerMobileLowImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w320-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerMobileMediumHdImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w960-fcrop64=1,32b75a57cd48a5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerTabletExtraHdImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerTabletHdImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w2276-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerTabletImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerTabletLowImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1138-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
+                    "bannerTvHighImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1920-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+                    "bannerTvImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w2120-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+                    "bannerTvLowImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w854-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj",
+                    "bannerTvMediumImageUrl": "https://yt3.ggpht.com/LIVzlyRXNhSrGGx4y4rdyFooQjuCSy1YzTaQ1TL0kKkYHOyikSBYuKm0IZDgA3m-lBgoyeLY=w1280-fcrop64=1,00000000ffffffff-k-c0xffffffff-no-nd-rj"
                 }
             },
-            "etag": "hjsblIc0sm0Mpfd_cAnfg5SWUWY",
-            "id": "UCAghVTy0jT75Cun74BfFiJQ",
+            "etag": "54aq3fJxb55MgIy7OtQif0aYA-A",
+            "id": "UC9dYjd_i2aoc3LRIclsYSqA",
             "kind": "youtube#channel",
             "snippet": {
-                "description": "",
+                "country": "US",
+                "description": "Three words.\n\nI. Quit. Youtube.\n\n--\n\nGoodbye!",
                 "localized": {
-                    "description": "",
-                    "title": "Harry Zhu"
+                    "description": "Three words.\n\nI. Quit. Youtube.\n\n--\n\nGoodbye!",
+                    "title": "Harry"
                 },
-                "publishedAt": "2014-07-30T00:35:16Z",
+                "publishedAt": "2013-07-13T18:34:47Z",
                 "thumbnails": {
                     "default": {
                         "height": 88,
-                        "url": "https://yt3.ggpht.com/a/AATXAJzEi7em4PNXASpWQ-fIYkubC3Xt21u9TDRd4g=s88-c-k-c0xffffffff-no-rj-mo",
+                        "url": "https://yt3.ggpht.com/a/AATXAJzrC_VXUMEULvwcOujZ4E1hDMgtzyyqgR23yoqf=s88-c-k-c0xffffffff-no-rj-mo",
                         "width": 88
                     },
                     "high": {
                         "height": 800,
-                        "url": "https://yt3.ggpht.com/a/AATXAJzEi7em4PNXASpWQ-fIYkubC3Xt21u9TDRd4g=s800-c-k-c0xffffffff-no-rj-mo",
+                        "url": "https://yt3.ggpht.com/a/AATXAJzrC_VXUMEULvwcOujZ4E1hDMgtzyyqgR23yoqf=s800-c-k-c0xffffffff-no-rj-mo",
                         "width": 800
                     },
                     "medium": {
                         "height": 240,
-                        "url": "https://yt3.ggpht.com/a/AATXAJzEi7em4PNXASpWQ-fIYkubC3Xt21u9TDRd4g=s240-c-k-c0xffffffff-no-rj-mo",
+                        "url": "https://yt3.ggpht.com/a/AATXAJzrC_VXUMEULvwcOujZ4E1hDMgtzyyqgR23yoqf=s240-c-k-c0xffffffff-no-rj-mo",
                         "width": 240
                     }
                 },
-                "title": "Harry Zhu"
+                "title": "Harry"
             }
         }
     ],

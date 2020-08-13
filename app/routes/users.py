@@ -176,13 +176,13 @@ def login():
         # Create a newUser object filled with the google values and the values that were just created
         newUser = User(
                         gid=data['emailAddresses'][0]['metadata']['source']['id'], 
-                        gfname=data['names'][0]['givenName'],                         
+                        gfname=data['names'][0]['givenName'],                       
                         fname=data['names'][0]['givenName'],
                         email=data['emailAddresses'][0]['value'],
                         image=data['photos'][0]['url'],
                         role=role,
                         admin=admin
-                       )
+                        )
         # save the newUser
         newUser.save()
         # then use the mongoengine get() method to get the newUser from the database as the currUser
@@ -258,7 +258,6 @@ def profile():
             pronouns = form.pronouns.data,
             birthday = form.birthday.data,
             gfname = session['gdata']['names'][0]['givenName'],
-            glname = session['gdata']['names'][0]['familyName']
         )
         
         return redirect(url_for('profile'))
