@@ -1,5 +1,7 @@
 ### Release notes - Minimum Viable Product Version - Harry Zhu
 
+# Project no longer sustained as of 1/1/2021
+
 
 ## 1) Purpose
 ### What is the specific purpose of this app?
